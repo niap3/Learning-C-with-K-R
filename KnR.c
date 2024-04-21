@@ -109,13 +109,41 @@ void one_word_per_line (int8_t c) {
     }
 }
 
+//? Exercise 1-13. Write a program to print a histogram of the lengths of words in its input. It is easy to draw the histogram with the bars horizontal; a vertical orientation is more challenging.
+void histogram_of_words(int8_t c) {
+    int arr[10], num_letter = 0;
+
+    for (int i = 0; i < 10; i++) {
+        arr[i] = 0;
+    }
+
+    while ((c = getchar()) != EOF) {
+        if (c == ' ') {
+            arr[num_letter]++;
+            num_letter = 0;
+        }
+        else {
+            num_letter++;
+        }
+    }
+
+    for (int i = 1; i < 10; i++) {
+        printf("%d -> %d |", i, arr[i]);
+        for (int j = 0; j < arr[i]; j++) {
+            printf("-");
+        }
+        printf("\n");
+    }
+}
+
 int main() {
     int8_t c;
     
     // replace_tab_backspace_backslash(c);
     // word_counter(c);
     // one_word_per_line(c);
-    num_of_occ_of_num(c);
+    // num_of_occ_of_num(c);
+    // histogram_of_words(c);
     
 
     return 0;
