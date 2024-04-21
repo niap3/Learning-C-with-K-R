@@ -51,9 +51,10 @@
 
 
 # include <stdio.h>
+# include <stdint.h>
 
 //? Exercise 1-10. Write a program to copy its input to its output, replacing each tab by \t, each backspace by \b, and each backslash by \\. This makes tabs and backspaces visible in an unambiguous way.
-void replace_tab_backspace_backslash(int c) {
+void replace_tab_backspace_backslash(int8_t c) {
     while ((c = getchar()) != EOF) {
         if (c == '\t') printf("\\t");
         else if (c == '\b') printf("\\b");
@@ -63,7 +64,7 @@ void replace_tab_backspace_backslash(int c) {
 }
 //* in this the backspace thing doesnt work since in cmd (windows) when we press backspace the input is getting edited from the input buffer itself.
 
-void word_counter(int c) {
+void word_counter(int8_t c) {
     int nw, nc, nl;
     nw = nc = nl = 0;
 
@@ -79,7 +80,7 @@ void word_counter(int c) {
     printf("w = %d, l = %d, c = %d", nw, nl, nc);
 }
 
-void num_of_occ_of_num (int c) {
+void num_of_occ_of_num (int8_t c) {
     int arr[10];
 
     for (int i = 0; i < 10; i++) {
@@ -98,7 +99,7 @@ void num_of_occ_of_num (int c) {
 }
 
 //? Exercise 1-12. Write a program that prints its input one word per line.
-void one_word_per_line (int c) {
+void one_word_per_line (int8_t c) {
     while ((c = getchar()) != EOF) {
         if (c == ' ') {
             putchar('\n');
@@ -109,12 +110,12 @@ void one_word_per_line (int c) {
 }
 
 int main() {
-    int c;
+    int8_t c;
     
     // replace_tab_backspace_backslash(c);
     // word_counter(c);
     // one_word_per_line(c);
-    // num_of_occ_of_num(c);
+    num_of_occ_of_num(c);
     
 
     return 0;
