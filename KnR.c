@@ -52,6 +52,7 @@
 
 # include <stdio.h>
 # include <stdint.h>
+# include <math.h>
 
 //? Exercise 1-10. Write a program to copy its input to its output, replacing each tab by \t, each backspace by \b, and each backslash by \\. This makes tabs and backspaces visible in an unambiguous way.
 void replace_tab_backspace_backslash(int8_t c) {
@@ -136,6 +137,53 @@ void histogram_of_words(int8_t c) {
     }
 }
 
+//? Power
+int power(int base, int n) {
+    int p = 1;
+    for (; n > 0; --n)
+        p = p * base;
+    return p;
+}
+
+void longest_line(int c) {
+    int longest_index = 0, longest_length = 0;
+    int curr_count = 0, char_count  = 0;
+
+    char lines[100];
+    int i = 0;
+    while((c = getchar()) != EOF) {
+        
+        //0 0 0 0
+        //twice is best
+        //0 0 14 14
+        //0 14 14 14
+        //0 14 0 14
+        //OT9 forever
+        //0 14 12 26
+
+        lines[i] = c; i++;
+
+        char_count++;
+        curr_count++;
+
+        if (c == '\n') {
+            printf("%d ", char_count);
+            printf("%d\n", curr_count);
+            if (curr_count > longest_length) {
+                longest_length = curr_count;
+                longest_index = char_count - curr_count;
+            }
+            curr_count = 0;
+        }
+    }
+
+    printf("longest index = %d, longest length = %d\n", longest_index, longest_length);
+
+    for (i = longest_index; i < longest_length; i++) {
+        printf("%c", lines[i]);
+    }
+}
+
 int main() {
     int8_t c;
     
@@ -144,6 +192,12 @@ int main() {
     // one_word_per_line(c);
     // num_of_occ_of_num(c);
     // histogram_of_words(c);
+    
+    // printf("%d", (int)pow(16, .5));
+    //* here, printf("%d", pow(16, .5)); this gives 0 as output. casting it to int as shown above will fix the problem. this is because pow() returns and takes double. so when used %d for double, there will be unexpected results. casting like this would cause errors nearing INT_MAX though so maybe just use printf("%f", pow(16, .5)) [see that i have changed %d to %f].also if num is 2, we can do 1 << power to get result. i.e, 2^3 == 1 << 3. 
+    // printf("%d", power(3, 2));
+
+    // longest_line(c);
     
 
     return 0;
