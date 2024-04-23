@@ -177,8 +177,8 @@ void longest_line(int c) {
         }
     }
 
+    // printing
     printf("longest index = %d, longest length = %d\n", longest_index, longest_length);
-
     for (i = longest_index; i < longest_length; i++) {
         printf("%c", lines[i]);
     }
@@ -197,8 +197,8 @@ int main() {
     //* here, printf("%d", pow(16, .5)); this gives 0 as output. casting it to int as shown above will fix the problem. this is because pow() returns and takes double. so when used %d for double, there will be unexpected results. casting like this would cause errors nearing INT_MAX though so maybe just use printf("%f", pow(16, .5)) [see that i have changed %d to %f].also if num is 2, we can do 1 << power to get result. i.e, 2^3 == 1 << 3. 
     // printf("%d", power(3, 2));
 
-    // longest_line(c);
-    
+    longest_line(c);
+
 
     return 0;
 }
